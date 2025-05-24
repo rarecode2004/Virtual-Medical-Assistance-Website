@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f3a7db;
+        }
+        .marquee {
+            background-color: #fefffe;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .buttons-container {
+            margin-top: 20px;
+        }
+        .scheme-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #f3a2b6;
+            color: white;
+            border-radius: 5px;
+        }
+        .scheme-btn:hover {
+            background-color: #fdc0ff;
+        }
+        #scheme-list {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .scheme-card {
+            background: #ffc6e6;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: left;
+        }
+        .scheme-card a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .scheme-card a:hover {
+            text-decoration: underline;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background: url('sug2.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>Government Schemes Information</h2>
+    <p>Here you can find various government schemes categorized for different groups.</p>
+    <marquee class="marquee">Explore government initiatives for children, elderly, and general welfare.</marquee>
+    
+    <div class="buttons-container">
+        <button class="scheme-btn" onclick="showSchemes('child')">Child Insurance</button>
+        <button class="scheme-btn" onclick="showSchemes('elderly')">Elderly Policies</button>
+        <button class="scheme-btn" onclick="showSchemes('general')">General Schemes</button>
+    </div>
+    
+    <div id="scheme-list"></div>
+    
+    <script>
+        function showSchemes(category) {
+            const schemes = {
+                child: [
+                    { name: "Balika Samridhi Yojana", description: "A scheme aimed at providing financial assistance to girl children.", url: "https://www.bajajfinserv.in/investments/balika-samridhi-yojana-bsy" },
+                    { name: "Sukanya Samriddhi Yojana", description: "A savings scheme for the girl child with tax benefits.", url: "https://www.nsiindia.gov.in/(S(5fmz1v553cnydy45pjb5sv55))/InternalPage.aspx?Id_Pk=89" }
+                ],
+                elderly: [
+                    { name: "Varishtha Pension Bima Yojana", description: "A pension scheme for senior citizens.", url: "https://web.umang.gov.in/landing/department/vpby.html" },
+                    { name: "Indira Gandhi National Old Age Pension Scheme", description: "A pension scheme for the elderly belonging to BPL families.", url: "https://www.myscheme.gov.in/schemes/nsap-ignoaps" }
+                ],
+                general: [
+                    { name: "Pradhan Mantri Jan Dhan Yojana", description: "A financial inclusion program for all citizens.", url: "https://pmjdy.gov.in/" },
+                    { name: "Ayushman Bharat Yojana", description: "A health insurance scheme providing free treatment.", url: "https://abdm.gov.in/" }
+                ]
+            };
+            
+            const schemeListDiv = document.getElementById("scheme-list");
+            schemeListDiv.innerHTML = "";
+            
+            schemes[category].forEach(scheme => {
+                const card = document.createElement("div");
+                card.className = "scheme-card";
+                
+                const title = document.createElement("h3");
+                title.textContent = scheme.name;
+                
+                const desc = document.createElement("p");
+                desc.textContent = scheme.description;
+                
+                const link = document.createElement("a");
+                link.href = scheme.url;
+                link.textContent = "Learn More";
+                link.target = "_blank";
+                
+                card.appendChild(title);
+                card.appendChild(desc);
+                card.appendChild(link);
+                
+                schemeListDiv.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>

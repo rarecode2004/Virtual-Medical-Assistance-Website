@@ -1,0 +1,134 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Meeting</title>
+    <link rel="stylesheet" href="conference_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Live Meeting with Transcription</h2>
+        <video id="video" autoplay playsinline muted></video> <!-- 🔇 Video remains muted -->
+
+        <h3>Live Transcription</h3>
+        <div id="transcription-box"></div>
+
+        <button onclick="startTranscription()">Start Transcription</button>
+        <button onclick="stopTranscription()">Stop Transcription</button>
+        <button onclick="saveTranscription()">Save Transcription</button>
+        <button onclick="stopMeeting()">End Meeting</button>
+
+        <p id="transcription-status" class="status-text">Status: Not Started</p>  
+
+        <h3>Final Summary</h3>
+        <div id="summary-box" class="summary-box"></div>
+
+        <h3>Medical Summary</h3>
+        <div id="medical-summary" class="summary-box"></div>
+    </div>
+
+    <script>
+        let recognition;
+        let transcriptionText = "";
+        let isTranscribing = false;
+
+        const medicalKeywords = ["fever", "headache", "cough", "infection", "pain", "medicine", "antibiotic", "syrup", "tablet", "capsule", "doctor", "hospital"];
+
+        // 🎤 Get User Media Without Echo
+        navigator.mediaDevices.getUserMedia({ video: true, audio: { echoCancellation: true, noiseSuppression: true } })
+            .then(stream => {
+                let videoElement = document.getElementById("video");
+                videoElement.srcObject = stream;
+                videoElement.muted = true; // 🔇 Ensure the video is muted
+
+                // Ensure only input is captured, but not played back
+                stream.getAudioTracks().forEach(track => track.enabled = true);
+            })
+            .catch(error => console.error("Error accessing webcam/audio:", error));
+
+        function startTranscription() {
+            if (isTranscribing) return; 
+            isTranscribing = true;
+            document.getElementById("transcription-status").innerText = "Status: Transcription Started...";
+
+            // Initialize Speech Recognition
+            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!window.SpeechRecognition) {
+                alert("Speech Recognition is not supported in this browser.");
+                return;
+            }
+
+            recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true; // Allow live updates
+            recognition.lang = "en-US";
+
+            recognition.onresult = (event) => {
+                let transcript = "";
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript + " ";
+                }
+
+                let timestamp = new Date().toLocaleTimeString();
+                let formattedText = `<p><strong>[${timestamp}]</strong> ${transcript}</p>`;
+
+                document.getElementById("transcription-box").innerHTML = formattedText;
+                transcriptionText += `[${timestamp}] ${transcript}\n`;
+            };
+
+            recognition.onerror = (event) => {
+                console.error("Speech recognition error:", event.error);
+                if (event.error === "no-speech" || event.error === "network") {
+                    stopTranscription();
+                    startTranscription(); // Restart automatically
+                }
+            };
+
+            recognition.onend = () => {
+                if (isTranscribing) {
+                    recognition.start(); // Restart if still transcribing
+                }
+            };
+
+            recognition.start();
+        }
+
+        function stopTranscription() {
+            if (!isTranscribing) return;
+            isTranscribing = false;
+            if (recognition) {
+                recognition.stop();
+            }
+            document.getElementById("transcription-status").innerText = "Status: Transcription Stopped";
+
+            // Show full transcript
+            document.getElementById("summary-box").style.display = "block";
+            document.getElementById("summary-box").innerHTML = `<p>${transcriptionText.replace(/\n/g, "<br>")}</p>`;
+
+            // Extract medical-related words
+            let medicalSummary = transcriptionText.split(/\s+/)
+                .filter(word => medicalKeywords.includes(word.toLowerCase()))
+                .join(", ");
+
+            if (medicalSummary) {
+                document.getElementById("medical-summary").style.display = "block";
+                document.getElementById("medical-summary").innerHTML = `<p><strong>Medical Terms:</strong> ${medicalSummary}</p>`;
+            }
+        }
+
+        function saveTranscription() {
+            let blob = new Blob([transcriptionText], { type: "text/plain" });
+            let a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "Meeting_Transcription.txt";
+            a.click();
+        }
+
+        function stopMeeting() {
+            stopTranscription();
+            window.location.href = "conference_home.html";
+        }
+    </script>
+</body>
+</html>

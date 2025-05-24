@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Prediction</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f7f7f7;
+    }
+    .card {
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .card-header {
+      background-color: #ffafc0;
+      color: white;
+      border-radius: 15px 15px 0 0;
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    /* Custom Predict Button styles */
+    .custom-predict-button {
+      background-color: #ffafc0 !important; /* Default pink */
+      border-color: #ffafc0 !important;
+      color: white !important;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    .custom-predict-button:hover {
+      background-color: #0056b3 !important; /* Hover blue */
+      border-color: #0056b3 !important;
+      color: white !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header text-center">
+        <h1>Heart Disease Prediction</h1>
+      </div>
+      <div class="card-body">
+        <form id="predictionForm">
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" class="form-control" id="age" name="age" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sex">Sex:</label>
+            <select class="form-control" id="sex" name="sex" required>
+              <option value="0">Female</option>
+              <option value="1">Male</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="bp">Blood Pressure (mm Hg):</label>
+            <input type="number" class="form-control" id="bp" name="bp" required>
+          </div>
+
+          <div class="form-group">
+            <label for="chol">Cholesterol Level (mg/dL):</label>
+            <input type="number" class="form-control" id="chol" name="chol" required>
+          </div>
+
+          <div class="form-group">
+            <label for="cp">Chest Pain Type:</label>
+            <select class="form-control" id="cp" name="cp" required>
+              <option value="0">Typical Angina</option>
+              <option value="1">Atypical Angina</option>
+              <option value="2">Non-Anginal Pain</option>
+              <option value="3">Asymptomatic</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="history">Family History of Heart Attack:</label>
+            <select class="form-control" id="history" name="history" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="diabetes">Diabetes:</label>
+            <select class="form-control" id="diabetes" name="diabetes" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+          <!-- Updated Predict Button with custom classes -->
+          <button type="button" class="btn custom-predict-button btn-block" onclick="predict()">Predict</button>
+        </form>
+
+        <h2 id="result" class="text-center"></h2>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function predict() {
+      const form = document.getElementById('predictionForm');
+      const formData = new FormData(form);
+
+      const age = parseInt(formData.get('age'));
+      const sex = parseInt(formData.get('sex'));
+      const bp = parseInt(formData.get('bp'));
+      const chol = parseInt(formData.get('chol'));
+      const cp = parseInt(formData.get('cp'));
+      const history = parseInt(formData.get('history'));
+      const diabetes = parseInt(formData.get('diabetes'));
+
+      let score = 0;
+
+      if (age > 50) score++;
+      if (sex === 1) score++;
+      if (bp > 130) score++;
+      if (chol > 200) score++;
+      if (cp !== 0) score++;
+      if (history === 1) score++;
+      if (diabetes === 1) score++;
+
+      let prediction = "No Heart Disease";
+      if (score >= 4) {
+        prediction = "High Risk of Heart Disease";
+      } else if (score >= 2) {
+        prediction = "Moderate Risk of Heart Disease";
+      }
+
+      document.getElementById('result').textContent = 'Prediction: ' + prediction;
+    }
+  </script>
+</body>
+</html>

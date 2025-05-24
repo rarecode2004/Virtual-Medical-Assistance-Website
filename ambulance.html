@@ -1,0 +1,100 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Ambulance Service</title>
+    <link rel="stylesheet" href="ambulance.css">
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="page-title">🚑 Book Your Emergency Ambulance Service</h1>
+
+        <!-- Map icon with location -->
+        <div class="map-location">
+            <img src="map-icon.png" alt="Map Icon" class="map-icon">
+            <span class="location">Madagadipet</span>
+        </div>
+    </div>
+
+    <marquee class="running-text">Medical Assistance is here to help you</marquee>
+
+    <!-- Google Maps Section -->
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps?q=ambulance&ll=11.947364,79.7756911&z=13&output=embed" 
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+
+    <p class="description">
+        For patients facing emergencies, the platform offers instant access to ambulance services, ensuring timely medical attention.
+        Unlike traditional methods that often lead patients to nearby but less equipped hospitals, the app suggests the most appropriate
+        medical facility based on the condition. Additionally, an emergency-specialized healthcare team provides real-time guidance 
+        on critical measures to take, ensuring the right actions are taken before the patient reaches the hospital.
+    </p>
+
+    <!-- Ambulance Cards -->
+    <div class="ambulance-container">
+        <!-- Newly Added Locations -->
+        
+
+        <div class="ambulance-card available">
+            <img src="ambulance8.jpeg" alt="Ambulance Service">
+            <h2>Villianur (10 km - 15 mins)</h2>
+            <p class="status available">Available (Arrives in 8 mins)</p>
+            <button class="details-btn" onclick="showPopup(this, '📞 Contact: 9012345678')">Details</button>
+        </div>
+        <div class="ambulance-card available">
+            <img src="ambulance9.jpeg" alt="Ambulance Service">
+            <h2>Kandamangalam (12 km - 18 mins)</h2>
+            <p class="status available">Available (Arrives in 9 mins)</p>
+            <button class="details-btn" onclick="showPopup(this, '📞 Contact: 8901234567')">Details</button>
+        </div>
+        <div class="ambulance-card available">
+            <img src="ambulance7.jpg" alt="Ambulance Service">
+            <h2>Ariyur (14 km - 20 mins)</h2>
+            <p class="status available">Available (Arrives in 10 mins)</p>
+            <button class="details-btn" onclick="showPopup(this, '📞 Contact: 9123456789')">Details</button>
+        </div>
+        <div class="ambulance-card available">
+            <img src="ambulance3.jpg" alt="Ambulance Service">
+            <h2>Puducherry (21 km - 30 mins)</h2>
+            <p class="status available">Available (Arrives in 12 mins)</p>
+            <button class="details-btn" onclick="showPopup(this, '📞 Contact: 9172635480')">Details</button>
+        </div>
+       
+        <div class="ambulance-card available">
+            <img src="ambulance2.jpg" alt="Ambulance Service">
+            <h2>Villupuram (25 km - 35 mins)</h2>
+            <p class="status available">Available (Arrives in 20 mins)</p>
+            <button class="details-btn" onclick="showPopup(this, '📞 Contact: 9765432109')">Details</button>
+        </div>
+        <div class="ambulance-card available">
+            <img src="ambulance4.jpg" alt="Ambulance Service">
+            <h2>Tindivanam (32 km - 40 mins)</h2>
+            <p class="status available">Available (Arrives in 18 mins)</p>
+            <button class="details-btn" onclick="showPopup(this, '📞 Contact: 9354728190')">Details</button>
+        </div>
+       
+        <div class="ambulance-card available">
+            <img src="ambulance1.jpg" alt="Ambulance Service">
+            <h2>Cuddalore (45 km - 55 mins)</h2>
+            <p class="status available">Available (Arrives in 15 mins)</p>
+            <button class="details-btn" onclick="showPopup(this, '📞 Contact: 9876543210')">Details</button>
+        </div>
+
+        <div class="ambulance-card unavailable">
+            <img src="ambulance6.jpg" alt="Ambulance Service">
+            <h2>Chidambaram (70 km - 1 hr 30 mins)</h2>
+            <p class="status unavailable">Service not available (Long Distance)</p>
+            <button class="details-btn" disabled>Details</button>
+        </div>
+
+        
+    </div>
+
+    <script src="ambulance.js"></script>
+</body>
+</html>

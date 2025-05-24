@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Settings - Virtual Medical Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Notification Settings</h1>
+        <form id="notificationForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label>Notification Preferences:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="emailNotif" name="emailNotif" checked>
+                    <label for="emailNotif">Email Notifications</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="smsNotif" name="smsNotif" checked>
+                    <label for="smsNotif">SMS Notifications</label>
+                </div>
+            </div>
+            <button type="submit">Save Preferences</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+    <script src="script1.js"></script>
+</body>
+</html>

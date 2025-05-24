@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Assistance</title>
+  <style>
+    /* Background Image Styling */
+    body {
+      background: url('sug2.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+  </style>
+  
+  <style>
+    body, html {
+      height: 200vh; /* Makes the page long enough to scroll */
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Removed the background video container entirely */
+
+    .content {
+      padding: 50px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5); /* Slightly darken the content area */
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      color: #FF69B4;
+      margin: 0;
+      display: inline-block;
+    }
+
+    .abstract-box {
+      width: 60%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      border: 2px solid #FF69B4;
+      font-size: 1.2em;
+      cursor: pointer;
+      /* Animation removed so the box stays still */
+    }
+
+    .abstract-box:hover {
+      background-color: #FF69B4;
+      color: black;
+    }
+
+    .abstract-box.stopped {
+      animation: none;
+    }
+
+    @keyframes zigzag {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-50px, 50px); }
+      50% { transform: translate(50px, 100px); }
+      75% { transform: translate(-50px, 150px); }
+      100% { transform: translate(0, 200px); }
+    }
+
+    .moving-text {
+      font-size: 2em;
+      margin-top: 50px;
+      /* No animation so it remains still */
+      animation: none;
+      font-family: 'Courier New', Courier, monospace;
+      color: rgb(250, 249, 249);
+    }
+
+    @keyframes moveText {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(100%); }
+      100% { transform: translateX(0); }
+    }
+
+    .additional-content {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      border: 2px solid #FF69B4;
+    }
+
+    .additional-content h2,
+    .additional-content h3 {
+      color: #FF69B4;
+    }
+
+    .video-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      overflow-x: auto;
+    }
+
+    .video-card {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      border: 2px solid #FF69B4;
+      width: 60%;
+      max-width: 600px;
+    }
+
+    .video-card video {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .photo {
+      margin-left: 20px;
+      max-width: 300px;
+      border-radius: 15px;
+      border: 2px solid #FF69B4;
+    }
+
+    .advantages {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      border: 2px solid #FF69B4;
+    }
+
+    .advantages h2 {
+      color: #FF69B4;
+    }
+
+    .medical-info {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      border: 2px solid #FF69B4;
+      margin-top: 20px;
+      font-size: 1.2em;
+      text-align: left;
+      max-width: 80%;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    .medical-info h3 {
+      color: #FF69B4;
+    }
+
+    .medical-info img {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 15px;
+      border: 2px solid #FF69B4;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background video container removed -->
+
+  <!-- Content -->
+  <div class="content">
+    <h1>Medical Assistance</h1>
+    
+    <div class="abstract-box" id="abstract-box" onclick="showAbstract()">
+      What is Medical Assistance Care.
+    </div>
+
+    <div id="abstract" style="display:none; margin-top: 20px; font-size: 1.4em;">
+      The Proposed system is a Medical Assistance application that connects patients with health professionals. Through this application, everyone can receive assistance and proper utilization is ensured. The application starts with assigning a health assistant where people can clarify their doubts. It maintains health care records of the user. Patients can also track the availability of prescribed medicines at nearby medical shops or order them through the app. This application supports multifunctionality such as connecting a smartwatch so that the health assistant can view the patient's heart rate, oxygen levels, and more. Though it doesn’t fully replace hospital interactions, it provides immediate support, such as clarifying insufficient dosage levels and more.
+    </div>
+
+    <div class="moving-text" id="moving-text">
+      We care and Monitor our patients.
+    </div>
+
+    <!-- Video Section -->
+    <div class="video-section">
+      <div class="video-card">
+        <video autoplay muted loop>
+          <source src="vi.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <img src="connect.png" alt="Photo" class="photo">
+    </div>
+  </div>
+
+  <div class="additional-content">
+    <h2>NON UTILIZATION OF PROPER HEALTHCARE</h2>
+    <p>1. India ranks 145th among 195 countries in terms of quality and accessibility of healthcare, worse than other neighboring countries like China, Bangladesh, Sri Lanka, and Bhutan according to a Lancet study.</p>
+    <p>2. In none other country but only in India people die at high rates because of the non-use of healthcare.</p>
+    <p>3. Proper utilization of healthcare is not ensured and people lack awareness.</p>
+    <p>4. Due to long distance, transport issues people fail to get proper healthcare.</p>
+    <h3>WHY DO PEOPLE NOT GET THE CARE THEY NEED??</h3>
+    <p>Distance to facilities</p>
+    <p>Waiting time is too long</p>
+    <p>Poor quality of care</p>
+    <p>Poor people in remote areas are least likely to receive adequate healthcare. This is especially true for regions with low numbers of skilled health workers.</p>
+  </div>
+
+  <div class="advantages">
+    <h2>ADVANTAGES</h2>
+    <p>1. PRODUCTIVITY INCREASED: Take COVID-19 as an example where even Doctors are prone to get affected by disease, by this app their productivity is increased.</p>
+    <p>2. UTILISATION IS ENSURED: Unlike offline appointments, everyone can get proper utilization of healthcare anywhere.</p>
+    <p>3. NO NEED TO SPEND MUCH TIME: In case of appointments, people have to wait for a long time, this waiting time also may increase the possibility of spreading disease from one patient to another, so safety and time are ensured properly.</p>
+    <p>4. ADVANTAGE TO PEOPLE WHO SEEK MENTAL CARE: Some people suffering from mental health issues struggle to go to offline hospitals and may feel inferior about consulting a psychiatrist. This application is really helpful to them as their privacy is encrypted in a way that they don’t need to worry about their problem.</p>
+  </div>
+
+  <!-- Medical Assistance Care Information -->
+  <div class="medical-info">
+    <h2>Medical Assistance Care Overview</h2>
+    <p><strong>Medical Assistance Care</strong> is a term that covers the use of technology to deliver clinical care at a distance. It ensures that a person receives healthcare when needed, especially for those with limited access to care.</p>
+
+    <p><strong>Medical Assistance Care</strong> uses electronic and telecommunication technology to provide an exchange of medical information, despite a person and their doctor not being in the same room.</p>
+
+    <p>It can be as simple as text messaging medical care to as advanced as remotely controlled surgery.</p>
+
+    <p>Experts have used <strong>Medical Assistance Care</strong> in clinical settings for decades, with its first reference in a clinical setting recorded in medical literature in the late 1950–1960s.</p>
+
+    <p>This article explores <strong>Medical Assistance Care</strong>, its uses, potential benefits, and drawbacks. It also answers frequently asked questions about the practice.</p>
+
+    <h3>What is Medical Assistance Care?</h3>
+    <p><strong>Medical Assistance Care</strong> allows a person to seek a doctor’s advice about nonemergency situations that do not require an in-office visit.</p>
+
+    <p>Currently, 76% of hospitals in the United States connect with people at a distance. They do this through video conferencing or other technology.</p>
+
+    <p>A person may also get medical services through a secure portal where the doctor can access their electronic medical record database.</p>
+
+    <p>However, insurance companies and practitioners do not consider <strong>Medical Assistance Care</strong> distinct from onsite services.</p>
+
+    <h3>Types</h3>
+    <p><strong>Medical Assistance Care</strong> has several types, including:</p>
+    <ul>
+      <li>real-time video communication</li>
+      <li>remote monitoring, which involves health data being reported, collected, and evaluated, such as:
+        <ul>
+          <li>blood pressures</li>
+          <li>cardiac stats</li>
+          <li>oxygen levels</li>
+          <li>respiratory rates</li>
+        </ul>
+      </li>
+      <li>store-and-forward — storing and sharing medical information, such as:
+        <ul>
+          <li>CAT scans</li>
+          <li>MRIs</li>
+          <li>X-rays</li>
+          <li>photos, videos, and text-based patient data</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Medical Assistance Care uses</h3>
+    <p>According to the Department of Health and Human Services (HHS), there was a 63-fold increase in the use of Medicare visits through <strong>Medical Assistance Care</strong> from 2019–2020 as a result of the COVID-19 pandemic. One-third of these are visits to behavioral health specialists.</p>
+
+    <p><strong>Medical Assistance Care</strong> amid the pandemic can help reduce a person’s contact with healthcare facilities and their risk of COVID-19. It can also help reduce staff exposure.</p>
+
+    <h3>Uses during the pandemic</h3>
+    <p>Below are potential uses of <strong>Medical Assistance Care</strong> during the pandemic:</p>
+    <ul>
+      <li>triaging and screening for COVID-19 symptoms</li>
+      <li>contact tracing</li>
+      <li>monitoring symptoms and people recovering from COVID-19</li>
+      <li>specialized COVID care for hospitalized individuals with COVID-19</li>
+    </ul>
+
+    <p>This helps with:</p>
+    <ul>
+      <li>faster testing</li>
+      <li>increasing the number of people healthcare workers can monitor at once</li>
+      <li>freeing up hospital beds</li>
+      <li>preventing the emergency rooms from becoming overwhelmed</li>
+    </ul>
+
+    <h3>Uses beyond the pandemic</h3>
+    <p>Beyond this, doctors can use <strong>Medical Assistance Care</strong> for many other purposes, including:</p>
+    <ul>
+      <li>general healthcare, such as wellness visits and blood pressure control</li>
+      <li>nonemergency follow-ups</li>
+      <li>mental health counseling</li>
+      <li>nutrition counseling</li>
+      <li>prescription for medications</li>
+      <li>physical therapy exercise</li>
+      <li><strong>Medical Assistance Care</strong> intensive care</li>
+    </ul>
+
+    <p>Experts also use <strong>Medical Assistance Care</strong> differently in various fields of medicine, such as:</p>
+    <ul>
+      <li>Telestroke: Experts use <strong>Medical Assistance Care</strong> in emergency departments for neurologists to communicate remotely with emergency doctors, reducing the need for in-house neurologists. This helps deal with the shortage of neurologists in many hospitals.</li>
+      <li>Teleradiology: Practitioners send images and reports from in-person or <strong>Medical Assistance Care</strong> exams to a remote radiologist, who then sends their report to the physician or another healthcare professional.</li>
+      <li>Telepsychiatry: Direct interaction between a person and a psychiatrist through telephone or video conferencing.</li>
+    </ul>
+
+    <h3>Benefits of Medical Assistance Care</h3>
+    <p><strong>Medical Assistance Care</strong> has several benefits for the people and the medical professionals involved.</p>
+
+    <h4>Comfort and convenience</h4>
+    <p>With <strong>Medical Assistance Care</strong>, people can access care in the comfort and privacy of their own homes. This reduces the need to travel, arrange for child care, and leave work.</p>
+
+    <p>It cuts off waiting time and allows people to arrange their consultations around their busy schedules.</p>
+
+    <p>A 2019 study found that <strong>Medical Assistance Care</strong> saves people and their families attending a pediatric neurosurgery <strong>Medical Assistance Care</strong> clinic substantial:</p>
+    <ul>
+      <li>travel time</li>
+      <li>cost</li>
+      <li>time away from work</li>
+    </ul>
+
+    <h4>Increased access to care from a distance</h4>
+    <p><strong>Medical Assistance Care</strong> helps make healthcare accessible, especially for people living in rural areas.</p>
+
+    <p>A 2020 study found that <strong>Medical Assistance Care</strong> provides some of the population access to care without potential:</p>
+    <ul>
+      <li>stigma</li>
+      <li>marginalization</li>
+      <li>discrimination</li>
+    </ul>
+
+    <h4>Cost-effective option</h4>
+    <p><strong>Medical Assistance Care</strong> consultations may be more affordable than in-person doctor visits and admission to the emergency rooms.</p>
+
+    <p>A 2020 review found that there was a reduction in health costs by 56% and travel costs by 94% when doctors used <strong>Medical Assistance Care</strong> in the following settings:</p>
+    <ul>
+      <li>intensive care unit (ICU) rooms</li>
+      <li>pediatrics</li>
+      <li>dermatology</li>
+      <li>radiology</li>
+    </ul>
+
+    <h4>Family support</h4>
+    <p><strong>Medical Assistance Care</strong> allows family members and caregivers to join in the consultation, ask questions, and provide information to contribute to their family member’s care.</p>
+
+    <h4>Prevention of chronic diseases</h4>
+    <p>A 2021 review found that <strong>Medical Assistance Care</strong> helps provide timely delivery of preventive care to people with cardiovascular diseases. This helps prevent acute events and the progression of these diseases.</p>
+
+    <h4>Controls the transmission of illnesses</h4>
+    <p>Scheduling appointments and creating more efficient clinic workflows lessen people’s exposure to others who may be ill. It also helps prevent and slow the transmission of COVID-19 and other viruses such as flu.</p>
+
+    <h4>Contextualized assessments</h4>
+    <p><strong>Medical Assistance Care</strong> helps healthcare professionals like occupational and physical therapists observe a person in their natural environment. This allows them to perform more thorough evaluations of the person’s abilities to move around and interact with their environment.</p>
+
+    <h3>Possible drawbacks</h3>
+    <p>Some of the common disadvantages of <strong>Medical Assistance Care</strong> include:</p>
+    <ul>
+      <li>technological glitches when using devices</li>
+      <li>inability to physically examine people</li>
+      <li>lack of patient-doctor rapport and trust</li>
+      <li>lack of access to the necessary infrastructure, such as high-speed internet</li>
+      <li>diagnosis hindrance due to the poor quality camera, images, or lighting</li>
+      <li>challenges in ensuring electronic health records remain protected</li>
+      <li>lack of clarity on malpractice and liability concerns</li>
+      <li>Medicaid and private payers have inconsistent policies on reimbursements</li>
+      <li>Medicare only covers people in some rural regions</li>
+      <li>individuals should meet with practitioners licensed in the state where they are in at the time of the visit</li>
+    </ul>
+  </div>
+
+  <script>
+    // JavaScript to toggle the abstract box
+    function showAbstract() {
+      var abstract = document.getElementById('abstract');
+      var box = document.getElementById('abstract-box');
+      if (abstract.style.display === 'none') {
+        abstract.style.display = 'block';
+        box.classList.add('stopped');
+      } else {
+        abstract.style.display = 'none';
+        box.classList.remove('stopped');
+      }
+    }
+
+    // Ensure the moving-text stays still by removing any animation.
+    document.getElementById('moving-text').style.animation = 'none';
+  </script>
+</body>
+</html>

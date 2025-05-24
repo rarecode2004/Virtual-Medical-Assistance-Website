@@ -1,0 +1,219 @@
+/* 
+  BODY BACKGROUND 
+  Replace 'my-background.jpg' with the filename/path of your own image 
+*/
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	background: url('sug2.png') no-repeat center center fixed; 
+	background-size: cover;
+  }
+  
+  /* Chatbox Wrapper (positions the toggle and the chat container) */
+  .chatbox-wrapper {
+	position: relative;
+	max-width: 100%;
+	margin: 0 auto;
+  }
+  
+  /* Toggle Button (the round icon you click to open/close the chat) */
+  .chatbox-toggle {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #2659d1;
+	color: #fff;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+	z-index: 100;
+  }
+  
+  /* The Chatbox Container (initially hidden) */
+  .chatbox-message-wrapper {
+	display: none; /* hidden by default; toggled by JS */
+	flex-direction: column;
+	width: 500px;       /* Larger width */
+	height: 700px;      /* Larger height */
+	max-width: 90%;
+	max-height: 90%;
+	margin: 20px auto;
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+  }
+  
+  /* Show the chatbox when .show is added by JavaScript */
+  .chatbox-message-wrapper.show {
+	display: flex;
+  }
+  
+  /* Heading at the top of the chatbox */
+  .chatbox-heading {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 15px;
+	background-color: #4556ba;
+	color: #fff;
+	border-bottom: 1px solid #ccc;
+  }
+  
+  /* Chatbox Header (Profile and status) */
+  .chatbox-message-header {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+  }
+  
+  .chatbox-message-profile {
+	display: flex;
+	align-items: center;
+  }
+  
+  .chatbox-message-image {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-right: 10px;
+  }
+  
+  .chatbox-message-name {
+	margin: 0;
+	font-weight: bold;
+  }
+  
+  .chatbox-message-status {
+	margin: 0;
+	font-size: 0.85rem;
+	color: rgb(0, 43, 128);
+  }
+  
+  /* Dropdown */
+  .chatbox-message-dropdown {
+	margin-left: auto;
+	position: relative;
+  }
+  
+  .chatbox-message-dropdown-toggle {
+	cursor: pointer;
+  }
+  
+  .chatbox-message-dropdown-menu {
+	list-style: none;
+	margin: 0;
+	padding: 5px 0;
+	position: absolute;
+	right: 0;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	display: none;
+  }
+  
+  .chatbox-message-dropdown:hover .chatbox-message-dropdown-menu {
+	display: block;
+  }
+  
+  .chatbox-message-dropdown-menu li {
+	padding: 5px 10px;
+  }
+  
+  .chatbox-message-dropdown-menu li a {
+	text-decoration: none;
+	color: #333;
+	font-size: 0.9rem;
+  }
+  
+  /* Chat Content (messages) */
+  .chatbox-message-content {
+	flex: 1; /* takes available space */
+	padding: 10px;
+	overflow-y: auto; /* scroll if too many messages */
+	background-color: #fafafa;
+  }
+  
+  .chatbox-message-no-message {
+	text-align: center;
+	color: #888;
+	margin-top: 30px;
+  }
+  
+  /* Individual message items */
+  .chatbox-message-item {
+	margin-bottom: 10px;
+	max-width: 80%;
+	word-wrap: break-word;
+	position: relative;
+	padding: 8px 12px;
+	border-radius: 5px;
+	font-size: 0.95rem;
+	line-height: 1.3;
+  }
+  
+  .chatbox-message-item.sent {
+	background-color: #dcf8c6;
+	align-self: flex-end;
+  }
+  
+  .chatbox-message-item.received {
+	background-color: #f1f0f0;
+	align-self: flex-start;
+  }
+  
+  .chatbox-message-item-time {
+	display: block;
+	font-size: 0.75rem;
+	color: #666;
+	margin-top: 4px;
+	text-align: right;
+  }
+  
+  /* Chat Form (bottom input area) */
+  .chatbox-message-bottom {
+	border-top: 1px solid #ccc;
+	padding: 10px;
+	background-color: #fff;
+  }
+  
+  .chatbox-message-form {
+	display: flex;
+	align-items: center;
+  }
+  
+  .chatbox-message-input {
+	flex: 1;
+	resize: none;
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	outline: none;
+	font-size: 0.95rem;
+  }
+  
+  .chatbox-message-submit {
+	background-color:  #4556ba;
+	color: #fff;
+	border: none;
+	margin-left: 10px;
+	padding: 10px;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  
+  .chatbox-message-submit i {
+	font-size: 1.2rem;
+  }
+  
+  .chatbox-message-submit:hover {
+	background-color: #7fe0e7;
+  }
+  

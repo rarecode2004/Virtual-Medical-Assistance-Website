@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Meeting</title>
+    <link rel="stylesheet" href="conference_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Live Meeting with Transcription</h2>
+        <video id="video" autoplay playsinline muted></video> <!-- Muted to prevent audio feedback -->
+
+        <h3>Live Transcription</h3>
+        <div id="transcription-box"></div>
+
+        <button onclick="startTranscription()">Start Transcription</button>
+        <button onclick="saveTranscription()">Save Transcription</button>
+        <button onclick="stopMeeting()">End Meeting</button>
+    </div>
+
+    <script>
+        let recognition;
+        let transcriptionText = "";
+        let lastTranscript = "";
+
+        // Start Webcam & Audio for WebRTC
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                let videoElement = document.getElementById("video");
+                videoElement.srcObject = stream;
+                videoElement.muted = true; // Prevent microphone from picking up its own audio
+            });
+
+        function startTranscription() {
+            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.continuous = true;
+            recognition.interimResults = false; // Prevent duplicate partial transcripts
+
+            recognition.onresult = (event) => {
+                let transcript = event.results[event.results.length - 1][0].transcript.trim();
+
+                if (transcript !== lastTranscript) { // Avoid repeating the same words
+                    let timestamp = new Date().toLocaleTimeString();
+                    let sentence = `<p><strong>[${timestamp}]</strong> ${transcript}</p>`;
+                    document.getElementById("transcription-box").innerHTML += sentence;
+                    transcriptionText += `[${timestamp}] ${transcript}\n`;
+
+                    lastTranscript = transcript; // Store last spoken text to avoid repetition
+                }
+            };
+
+            recognition.start();
+        }
+
+        function saveTranscription() {
+            let blob = new Blob([transcriptionText], { type: "text/plain" });
+            let a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "Meeting_Transcription.txt";
+            a.click();
+        }
+
+        function stopMeeting() {
+            if (recognition) recognition.stop();
+            window.location.href = "conference_home.html";
+        }
+    </script>
+</body>
+</html>

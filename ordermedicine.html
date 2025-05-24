@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Your Medicine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Background image */
+            background: url('sug2.png') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow-y: scroll;
+            max-height: 100vh;
+            padding-top: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            text-align: center;
+            color: #ab0520;
+        }
+        /* Card styling */
+        .card {
+            /* Use the requested default color: rgba(230, 191, 235, 0.8) */
+            background: rgba(236, 207, 239, 0.8);
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 30%;
+            box-sizing: border-box;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            text-align: justify;
+        }
+        /* Remove entire-row hover effect 
+        .card-container:hover {
+            background-color: aqua;
+        } 
+        */
+        /* Individual card hover color #ffafc0 */
+        .card:hover {
+            background-color: #ffafc0;
+            transform: scale(1.03);
+        }
+        /* Order button styling */
+        .order-button {
+            display: block;
+            width: 100%;
+            /* Default background #ffafc0 */
+            background-color: #ffafc0;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        /* Button hover color #0056b3 */
+        .order-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Order Your Medicine</h1>
+            <p><justify>This application has a feature that can track the availability of the prescribed medicine in nearby medical shops through the GPS (Global Positioning System), where the patient does not need to spend time on various medical shops about the availability. It will suggest the user nearby medical shops, if not they are supposed to buy they can order that particular medicine in this same application itself. In case of any emergency situation, they can also track the nearby hospitals, where immediate care is needed.</justify></p>
+        </div>
+
+        <div class="section">
+            <h2>Paediatric</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="amo.jpeg" alt="Paediatric Medicine">
+                    <h3>Amoxicillin</h3>
+                    <p>Amoxicillin is a broad-spectrum antibiotic belonging to the penicillin class, used to treat various bacterial infections, including respiratory tract infections, ear infections, urinary tract infections, and skin infections. It works by inhibiting bacterial cell wall synthesis, leading to the destruction of the bacteria.</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+                <div class="card">
+                    <img src="ir.jpeg" alt="Paediatric Medicine">
+                    <h3>Ibuprofen</h3>
+                    <p>Ibuprofen is used to reduce fever and treat pain or inflammation caused by many conditions such as headache, toothache, arthritis, or minor injury.nti-inflammatory drug (NSAID) that is used to relieve pain, fever, and inflammation. It may also be used to close a patent ductus arteriosus in a </p>
+                    <button class="order-button">Order Now</button>
+                </div>
+                <div class="card">
+                    <img src="para.jpeg" alt="Paediatric Medicine">
+                    <h3>Paracetamol</h3>
+                    <p>Paracetamol is a common painkiller used to treat aches and pain. It can also be used to reduce a high temperature.is a widely used over the counter medication. Common brand names include Tylenol and Panadol. At a standard dose, paracetamol only slightly reduces fever</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Cardiology</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="aten.jpeg" alt="Cardiology Medicine">
+                    <h3>Atenolol</h3>
+                    <p>Atenolol is a beta-blocker medication primarily used to treat high blood pressure (hypertension), angina (chest pain), and certain heart conditions. It works by blocking beta-adrenergic receptors, which slows down the heart rate and reduces the heart's workload</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+                <div class="card">
+                    <img src="lia.jpeg" alt="Cardiology Medicine">
+                    <h3>Lisinopril</h3>
+                    <p>Lisinopril is an angiotensin-converting enzyme (ACE) inhibitor used to treat high blood pressure, heart failure, and improve survival after a heart attack. It works by relaxing blood vessels, making it easier for the heart to pump blood efficiently</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+                <div class="card">
+                    <img src="clodii.jpeg" alt="Cardiology Medicine">
+                    <h3>Clopidogrel</h3>
+                    <p>Clopidogrel is used to prevent heart attacks and strokes in persons with heart disease, blood circulation disease. reduce the risk of heart disease and stroke in those at high risk. It is also used together with aspirin in heart attacks and following the placement of a coronary artery stent dual antiplatelet therapy</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Dermatology</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="hydro.jpeg" alt="Dermatology Medicine">
+                    <h3>Hydrocortisone Cream</h3>
+                    <p>Hydrocortisone cream is a topical corticosteroid used to reduce inflammation, redness, and itching caused by various skin conditions such as eczema, dermatitis, insect bites, and allergic reactions. It works by suppressing the immune response in the affected area, thereby alleviating symptoms of swelling and irritation. </p>
+                    <button class="order-button">Order Now</button>
+                </div>
+                <div class="card">
+                    <img src="ben.jpeg" alt="Dermatology Medicine">
+                    <h3>Benzoyl Peroxide</h3>
+                    <p>Benzoyl peroxide is used to treat mild to moderate acne. It may be used in combination with other acne treatments.You may be dealing with both of these types of acne and might be wondering if you can use benzoyl peroxide for noninflammatory spots too.However, they are classified as noninflammatory because they don’t cause the red bumps that are associated with other types of acne pimples.</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+                <div class="card">
+                    <img src="caka.jpeg" alt="Dermatology Medicine">
+                    <h3>Calamine Lotion</h3>
+                    <p>Calamine lotion is used to relieve the itching and discomfort of minor skin irritations, such as poison ivy, poison oak, and poison sumac.It is a commonly used medication for the treatment of neuropathic pain caused by diabetic neuropathy and central pain. </p>
+                    <button class="order-button">Order Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Neurology</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="Carbamazepine.jpeg" alt="Neurology Medicine">
+                    <h3>Carbamazepine</h3>
+                    <p>Carbamazepine is a prescription medication used to treat epilepsy, trigeminal neuralgia, and bipolar disorder. It works by affecting nerve signals in the brain, helping to reduce excessive electrical activity that leads to seizures and nerve pain</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+                <div class="card">
+                    <img src="Gabapentin.jpeg" alt="Neurology Medicine">
+                    <h3>Gabapentin</h3>
+                    <p>Gabapentin is used to treat nerve pain caused by herpes virus or shingles (herpes zoster).It is a commonly used medication for the treatment of the neuropathic pain caused by the diabetic neuropathy and the central pain. It is moderately effective: about 30–40% of those given gabapentin</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+                <div class="card">
+                    <img src="Sumatriptan.jpeg" alt="Neurology Medicine">
+                    <h3>Sumatriptan</h3>
+                    <p>Sumatriptan is a prescription medication used to treat migraines and cluster headaches. It belongs to a class of drugs called triptans, which work by narrowing blood vessels in the brain and reducing inflammation to relieve headache symptoms</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.order-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                let medicineName = event.target.closest('.card').querySelector('h3').innerText;
+                let searchURL = `https://www.1mg.com/search/all?name=${encodeURIComponent(medicineName)}`;
+                window.open(searchURL, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

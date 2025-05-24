@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Reminder System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+    background-color:#e295b1;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 450px;
+    margin-top: 50px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #f1cdea;
+}
+.container:hover{
+    background-color:#fecedd;
+}
+
+h2 {
+    font-weight: bold;
+    color: #dc35dc;
+    text-align: center;
+}
+
+.form-control {
+    border-radius: 15px;
+    border: 1px solid #ced4da;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg,#ffd5e2, #e08bd5);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #b71c1c, #c83c3c);
+    transform: scale(1.05);
+}
+
+#reminderList {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.reminder-card {
+    padding: 15px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 2px 4px 10px rgba(219, 124, 124, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.reminder-card:hover {
+    transform: scale(1.03);
+    box-shadow: 2px 6px 12px rgba(188, 168, 168, 0.2);
+    background-color: #777;
+}
+
+.reminder-card strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.reminder-card small {
+    font-size: 12px;
+    color: #777;
+}
+
+.btn-sm {
+    background: #ff4d4d;
+    border: none;
+    padding: 5px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-sm:hover {
+    background: #cc0000;
+    transform: scale(1.1);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reminder-card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+body {
+    background: url('sug2.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center text-danger">Set a Reminder</h2>
+    <form id="reminderForm">
+        <div class="mb-3">
+            <label class="form-label">Reminder Title:</label>
+            <input type="text" id="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Date & Time:</label>
+            <input type="datetime-local" id="time" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-danger w-100">Set Reminder</button>
+    </form>
+</div>
+
+<!-- Floating Reminder Notifications -->
+<div id="reminderList"></div>
+
+<!-- Audio element for sound alert -->
+<audio id="reminderSound">
+    <source src="digital-clock-digital-alarm-buzzer-992.wav" type="audio/wav">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        showReminders();
+
+        document.getElementById("reminderForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            
+            let title = document.getElementById("title").value.trim();
+            let time = document.getElementById("time").value;
+            
+            if (!title || !time) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            let reminders = JSON.parse(localStorage.getItem("reminders")) || [];
+            reminders.push({ title, time });
+            localStorage.setItem("reminders", JSON.stringify(reminders));
+
+            showReminders();
+        });
+
+        function showReminders() {
+            let reminders = JSON.parse(localStorage.getItem("reminders")) || [];
+            let reminderList = document.getElementById("reminderList");
+            reminderList.innerHTML = "";
+            
+            reminders.forEach((reminder, index) => {
+                let reminderDiv = document.createElement("div");
+                reminderDiv.className = "reminder-card p-3";
+                reminderDiv.innerHTML = `
+                    <strong>${reminder.title}</strong> <br>
+                    <small>${new Date(reminder.time).toLocaleString()}</small>
+                    <button class="btn btn-sm btn-danger float-end mt-2" onclick="deleteReminder(${index})">Delete</button>
+                `;
+                reminderList.appendChild(reminderDiv);
+            });
+        }
+
+        window.deleteReminder = function (index) {
+            let reminders = JSON.parse(localStorage.getItem("reminders")) || [];
+            reminders.splice(index, 1);
+            localStorage.setItem("reminders", JSON.stringify(reminders));
+            showReminders();
+        };
+
+        function checkReminders() {
+            let reminders = JSON.parse(localStorage.getItem("reminders")) || [];
+            let now = new Date().getTime();
+
+            reminders.forEach((reminder, index) => {
+                let reminderTime = new Date(reminder.time).getTime();
+                if (reminderTime <= now) {
+                    playAlarm();  // Play alert sound
+                    alert(`Reminder: ${reminder.title}`);
+                    new Notification("Reminder", { body: reminder.title });
+                    
+                    reminders.splice(index, 1);
+                    localStorage.setItem("reminders", JSON.stringify(reminders));
+                    showReminders();
+                }
+            });
+        }
+
+        function playAlarm() {
+            let sound = document.getElementById("reminderSound");
+            sound.volume = 1.0; // Ensure volume is max
+            sound.play().catch(error => {
+                console.log("Autoplay blocked, user interaction required:", error);
+            });
+        }
+
+        if ("Notification" in window) {
+            Notification.requestPermission();
+        }
+
+        setInterval(checkReminders, 10000); // Check every 10 seconds
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

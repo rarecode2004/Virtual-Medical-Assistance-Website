@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Services</title>
+    <link rel="stylesheet" href="sty.css">
+    <style>
+        body {
+            background: url('sug2.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.8); /* Optional: To make content more readable */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            transition: transform 0.2s;
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Service</h1>
+        <div class="card-container">
+            <div class="card" onclick="location.href='conference_home.html'">
+                <img src="doctorimgg.png" alt="Doctor">
+                <h3>Connect with Doctor</h3>
+            </div>
+            <div class="card" onclick="location.href='ordermedicine.html'">
+                <img src="medorder.png" alt="Order Medicine">
+                <h3>Order Medicine</h3>
+            </div>
+            <!-- New Card for Tracking Nearby Hospitals/Clinics -->
+            <div class="card" onclick="trackNearbyHospitals()">
+                <img src="nearbyimg.png" alt="Track Nearby">
+                <h3>Track Nearby</h3>
+            </div>
+            <!--Ambulance-->
+            <div class="card" onclick="location.href='ambulance.html'">
+                <img src="ambul.png" alt="Emergency Ambulance ">
+                <h3>Emergency Ambulance</h3>
+            </div>
+            <!--Image processing-->
+            <div class="card" onclick="location.href='result.html'">
+                <img src="skins.png" alt="Skin check">
+                <h3>Analyse Skin Disease</h3>
+              </div>
+              <div class="card" onclick="location.href='index.html'">
+                <img src="heartuh.png" alt="Heart Prediction">
+                <h3>Heart Disease Prediction</h3>
+            </div>
+            <div class="card" onclick="location.href='foodanalysis.html'">
+                <img src="intake.png" alt="Healthy Intake">
+                <h3>Check Healthy Intake Level</h3>
+            </div>
+            
+           
+            <div class="card" onclick="location.href='bloodbank.html'">
+                <img src="bbank.png" alt="Bloodbank">
+                <h3>Blood Bank</h3>
+            </div>
+            <div class="card" onclick="location.href='notification.html'">
+                <img src="remainderimage.png" alt="Reminder">
+                <h3>Medicie Intake Reminder</h3>
+            </div>
+            <div class="card" onclick="location.href='govtschemes.html'">
+                <img src="govtofindia.png" alt="Govt Schemes">
+                <h3>Govt Schemes</h3>
+            </div>
+            <div class="card" onclick="location.href='bmicalc.html'">
+                <img src="bmiiiiii.png" alt="BMI Calculator">
+                <h3>BMI Calculator</h3>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

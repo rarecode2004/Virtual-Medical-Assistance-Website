@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right,#fef3ef, #fef3ef);
+    text-align: center;
+    padding: 50px;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+button {
+    background:#ffafc0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.success-icon {
+    font-size: 50px;
+    color: green;
+    margin: 20px;
+}
+
+.container {
+    width: 85%;  /* Increased width */
+    max-width: 1100px; /* Adjusted for a better look */
+    height: auto; /* Let it expand as needed */
+    background: white;
+    padding: 40px; /* More padding for spacing */
+    border-radius: 12px; /* Smooth corners */
+    box-shadow: 0px /* Container: enlarge and center */
+    .container {
+      max-width: 700px;       /* Increased width for a larger box */
+      margin: 60px auto;      /* Center horizontally, add more vertical space */
+      background-color: #fff; /* Light background for contrast */
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* New: Consultation image styling */
+    .consult-image {
+      width: 400px;         /* Adjust as needed */
+      margin: 20px 0;       /* Spacing around the image */
+    }
+    
+    /* New: Additional paragraph text styling */
+    .info-text {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    /* Example: Style the heading if needed */
+    .container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+    
+    /* Existing form & button styles, if you want them larger or consistent */
+    form label {
+      display: inline-block;
+      margin: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    form input[type="date"],
+    form input[type="time"] {
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    form button {
+      background-color: #ffafc0; /* Pinkish background for 'Schedule' button */
+      border: none;
+      padding: 10px 20px;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    form button:hover {
+      background-color: #0056b3; /* Slightly darker pink on hover */
+    }
+     20px rgba(0, 0, 0, 0.2);
+    
+    /* Centering Fix */
+    margin: 50px auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.container {
+    width: 80%; /* Adjust width as needed */
+    margin: auto;
+    text-align: center;
+}
+
+.container p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+.container {
+  width: 90%; /* Make it wider */
+  max-width: 900px; /* Adjust for responsiveness */
+  min-height: 250px; /* Ensure enough height */
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 80px auto; /* Center the box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+h2 {
+  font-size: 26px; /* Increase font size */
+  color: #333;
+  margin-bottom: 20px;
+}
+
+button {
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 6px;
+}
+/* New: Join Us Image Styling */
+.join-image {
+  width: 200px; /* Adjust size as needed */
+  margin: 20px 0;
+}
+
+/* New: Additional Paragraph Styling */
+.info-text {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}

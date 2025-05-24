@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Meeting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Live Meeting</h2>
+        <video id="video" autoplay playsinline></video>
+        <p id="transcription">Listening...</p>
+        <button onclick="startTranscription()">Start Transcription</button>
+        <button onclick="stopMeeting()">End Meeting</button>
+    </div>
+
+    <script>
+        // WebRTC for video
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                document.getElementById("video").srcObject = stream;
+            });
+
+        // Speech Recognition
+        let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+
+        function startTranscription() {
+            recognition.start();
+            recognition.onresult = (event) => {
+                let transcript = "";
+                for (let i = 0; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript + " ";
+                }
+                document.getElementById("transcription").innerText = transcript;
+            };
+        }
+
+        function stopMeeting() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

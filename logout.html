@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #76d7c4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .logout-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .logout-container a {
+            text-decoration: none;
+            color: #d9534f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <p>Welcome to your dashboard!</p>
+        <div class="logout-container">
+            <a href="#" id="logout">Logout</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // JavaScript for handling the logout functionality
+            document.getElementById('logout').addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent the default link behavior
+                
+                // Simulate logout by clearing session storage
+                sessionStorage.clear();
+                
+                // You can also clear cookies if needed
+                // document.cookie.split(";").forEach((c) => {
+                //     document.cookie = c.replace(/=.*$/, "=;expires=Thu, 01 Jan 1970 00:00:00 GMT");
+                // });
+                
+                // Redirect to the login page or home page
+                window.location.href = 'login.html'; // Replace with your login URL
+            });
+        });
+    </script>
+</body>
+</html>

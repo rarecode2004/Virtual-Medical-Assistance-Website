@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .offer-banner {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .moving-text {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            white-space: nowrap;
+            animation: moveText 10s linear infinite;
+        }
+        @keyframes moveText {
+            from { left: 100%; }
+            to { left: -100%; }
+        }
+        .order-form {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .order-form:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .form-control {
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s, background-color 0.3s;
+        }
+        .form-control:hover, .form-control:focus {
+            border-color: #ff5722;
+            box-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+            transform: scale(1.05);
+        }
+        .form-control:focus {
+            background-color: #ffcccb; /* Light Red */
+        }
+        .form-control:focus:nth-of-type(2) {
+            background-color: #c3e6cb; /* Light Green */
+        }
+        .form-control:focus:nth-of-type(3) {
+            background-color: #bee3f8; /* Light Blue */
+        }
+        .form-control:focus:nth-of-type(4) {
+            background-color: #fef3c7; /* Light Yellow */
+        }
+        .form-control:focus:nth-of-type(5) {
+            background-color: #fae1dd; /* Light Pink */
+        }
+        .form-control:focus:nth-of-type(6) {
+            background-color: #e0e0e0; /* Light Grey */
+        }
+        .payment-methods {
+            margin: 20px 0;
+        }
+        .payment-methods label {
+            margin-right: 10px;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Background -->
+    <video class="bg-video" autoplay muted loop>
+        <source src="vi.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Offer Banner -->
+    <div class="offer-banner">
+        <h2>Order Now and Get 30% Off!</h2>
+        <div class="moving-text">Hurry! Limited Time Offer - Save 30% on Your Order Today!</div>
+    </div>
+
+    <!-- Order Form -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="order-form">
+                    <h3 class="mb-4">Order Details</h3>
+                    <form>
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h4>Personal Information</h4>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="example@email.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" placeholder="123 Main St, Apt 4B" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="New York" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="state" class="form-label">State</label>
+                                <input type="text" class="form-control" id="state" placeholder="NY" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="zip" class="form-label">ZIP Code</label>
+                                <input type="text" class="form-control" id="zip" placeholder="10001" required>
+                            </div>
+                        </div>
+
+                        <!-- Payment Information -->
+                        <div class="form-section">
+                            <h4>Payment Information</h4>
+                            <div class="mb-3">
+                                <label for="cardName" class="form-label">Name on Card</label>
+                                <input type="text" class="form-control" id="cardName" placeholder="John Doe" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="expiryDate" class="form-label">Expiry Date</label>
+                                <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="form-section payment-methods">
+                            <h4>Payment Method</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="visa" value="visa" checked>
+                                <label class="form-check-label" for="visa">
+                                    Visa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="mastercard" value="mastercard">
+                                <label class="form-check-label" for="mastercard">
+                                    MasterCard
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="amex" value="amex">
+                                <label class="form-check-label" for="amex">
+                                    American Express
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="cod">
+                                <label class="form-check-label" for="cod">
+                                    Cash on Delivery (COD)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

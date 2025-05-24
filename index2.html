@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Conference</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        video { width: 60%; border: 2px solid black; margin: 10px; }
+        #transcript { margin-top: 20px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+
+    <h2>Online Conferencing Platform</h2>
+    <button onclick="startMeeting()">Start Meeting</button>
+    <button onclick="stopMeeting()">Stop Meeting</button>
+
+    <p><strong>Meeting Link:</strong> <span id="meetingLink"></span></p>
+
+    <video id="localVideo" autoplay muted></video>
+    
+    <h3>Meeting Transcript:</h3>
+    <div id="transcript"></div>
+
+    <script>
+        let mediaStream;
+        let recognition;
+        let transcriptText = "";
+
+        function startMeeting() {
+            // Generate Meeting Link
+            const link = window.location.href + "?room=" + Math.random().toString(36).substring(7);
+            document.getElementById("meetingLink").innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
+
+            // Start Webcam & Mic
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then(stream => {
+                    mediaStream = stream;
+                    document.getElementById("localVideo").srcObject = stream;
+                })
+                .catch(err => console.error("Error accessing media devices.", err));
+
+            // Start Speech Recognition
+            if ('webkitSpeechRecognition' in window) {
+                recognition = new webkitSpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = true;
+
+                recognition.onresult = event => {
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        if (event.results[i].isFinal) {
+                            transcriptText += event.results[i][0].transcript + " ";
+                            document.getElementById("transcript").innerText = transcriptText;
+                        }
+                    }
+                };
+
+                recognition.start();
+            } else {
+                alert("Your browser does not support speech recognition.");
+            }
+        }
+
+        function stopMeeting() {
+            // Stop Media Stream
+            if (mediaStream) {
+                mediaStream.getTracks().forEach(track => track.stop());
+            }
+
+            // Stop Speech Recognition
+            if (recognition) {
+                recognition.stop();
+            }
+
+            alert("Meeting Ended. Transcript is displayed.");
+        }
+    </script>
+
+</body>
+</html>

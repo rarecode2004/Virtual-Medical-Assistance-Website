@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Scheduled</title>
+    <link rel="stylesheet" href="conference_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Meeting Scheduled Successfully!</h2>
+        <div class="success-icon">✔️</div>
+        <p>Your meeting is scheduled on <span id="scheduledDate"></span> at <span id="scheduledTime"></span></p>
+        <button onclick="window.location.href='join_conference.html'">Join Meeting</button>
+    </div>
+
+    <script>
+        document.getElementById("scheduledDate").innerText = localStorage.getItem("meetingDate");
+        document.getElementById("scheduledTime").innerText = localStorage.getItem("meetingTime");
+    </script>
+</body>
+</html>

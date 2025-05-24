@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Meeting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Schedule a Meeting</h2>
+        <form id="meetingForm">
+            <label for="meetingDate">Select Date:</label>
+            <input type="date" id="meetingDate" required>
+
+            <label for="meetingTime">Select Time:</label>
+            <input type="time" id="meetingTime" required>
+
+            <button type="submit">Schedule</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("meetingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            localStorage.setItem("meetingDate", document.getElementById("meetingDate").value);
+            localStorage.setItem("meetingTime", document.getElementById("meetingTime").value);
+            window.location.href = "success.html";
+        });
+    </script>
+</body>
+</html>

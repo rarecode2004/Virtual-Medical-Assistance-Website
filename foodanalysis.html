@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Food Intake Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #fef3ef; /* Updated Background */
+        }
+        header {
+            background-color: rgba(255, 179, 186, 0.8); /* Light pink tone */
+            color: rgb(55, 50, 50);
+            padding: 15px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        main {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* White for better readability */
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 3px solid #ffafc0;
+            border-radius: 15px;
+            resize: vertical;
+            background-color: #fef3ef; /* Matching input background */
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #ffafc0;
+            color: rgb(32, 29, 29);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3; /* Softer pink for hover */
+            color: white;
+        }
+        .analysis {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .healthy {
+            color: green;
+        }
+        .unhealthy {
+            color: red;
+        }
+        footer {
+            background-color: rgba(255, 179, 186, 0.8);
+            color: rgb(46, 42, 42);
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Weekly Food Intake Analysis</h1>
+    </header>
+    <main>
+        <div class="input-group">
+            <label for="food-intake">Enter your food intake for the past week:</label>
+            <textarea id="food-intake" rows="10" placeholder="E.g., rice, junk, fruits, vegetables, soda, etc."></textarea>
+        </div>
+        <button onclick="analyzeIntake()">Analyze</button>
+        <div class="analysis" id="analysis"></div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Medical Assistance</p>
+    </footer>
+
+    <script>
+        function analyzeIntake() {
+            const intake = document.getElementById('food-intake').value.toLowerCase();
+            const analysisDiv = document.getElementById('analysis');
+
+            const healthyFoods = ['fruits', 'vegetables', 'salad', 'nuts', 'whole grains', 'lean protein'];
+            const unhealthyFoods = ['junk', 'soda', 'fast food', 'sweets', 'fried', 'processed'];
+
+            let healthyCount = 0;
+            let unhealthyCount = 0;
+
+            healthyFoods.forEach(food => {
+                if (intake.includes(food)) healthyCount++;
+            });
+
+            unhealthyFoods.forEach(food => {
+                if (intake.includes(food)) unhealthyCount++;
+            });
+
+            if (healthyCount > unhealthyCount) {
+                analysisDiv.innerHTML = `<p class="healthy">You have a healthy diet! Keep it up.</p>`;
+            } else {
+                analysisDiv.innerHTML = `<p class="unhealthy">You might want to include more healthy foods in your diet.</p>`;
+                analysisDiv.innerHTML += `<p>Suggested healthy foods: fruits, vegetables, whole grains, lean proteins.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

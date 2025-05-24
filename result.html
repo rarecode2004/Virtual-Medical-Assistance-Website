@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skin Disease Analysis</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("{{ url_for('static', filename='sug2.png') }}") no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .header {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .page-title {
+      margin: 0;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    /* Running marquee text */
+    .running-text {
+      font-size: 16px;
+      font-weight: bold;
+      color: yellow;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 0;
+      margin: 0;
+    }
+
+    /* Subheading */
+    .heading-sub {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    /* Info Box */
+    .info-box {
+      width: 80%;
+      margin: 20px auto;
+      background: #fef3ef; /* Fixed - Now applied properly */
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: left;
+      color: #333;
+    }
+
+    /* Upload Section */
+    .upload-section {
+      width: 80%;
+      margin: 20px auto;
+      background: #fef3ef; /* Fixed - Now applied properly */
+      color: #333;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .upload-section h3 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #333;
+    }
+    .form-group {
+      margin: 20px 0;
+    }
+    .form-group input[type="file"] {
+      padding: 8px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .analyze-btn {
+      background: #ffdab9; /* Light Peach */
+      color: #333;
+      font-size: 18px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+    .analyze-btn:hover {
+      background: #007BFF; /* Blue */
+      color: #fff;
+    }
+    background: url("static/sug2.png") no-repeat center center fixed;
+    
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 class="page-title">Skin Disease Analysis</h1>
+  </div>
+
+  <!-- Running marquee text -->
+  <marquee class="running-text">
+    Because every skin story deserves our utmost attention and care!! 
+    Your skin’s health is our priority—because caring is what we do best!! 
+    We’re here for you, every step of the way to healthier skin!!
+  </marquee>
+
+  <!-- Subheading -->
+  <h2 class="heading-sub">Your skin’s health is our priority</h2>
+
+  <!-- Info Box -->
+  <div class="info-box">
+    We are here! We believe that taking care of your skin should be simple, accessible, and reassuring.
+    Our AI-driven platform empowers you to quickly check the severity of any skin issue by simply uploading a photo
+    or scanning the affected area. Within moments, you’ll receive personalized insights about potential concerns and guidance
+    on the next steps—whether it’s a simple home remedy or scheduling an appointment with a healthcare professional.
+    We’re dedicated to providing you with accurate, reliable information, so you can feel confident in your skin every day.
+    By combining cutting-edge technology with genuine care, we strive to make skin health an effortless part of your daily
+    routine—because when it comes to your well-being, every detail matters.
+  </div>
+
+  <!-- Upload section -->
+  <div class="upload-section">
+    <h3>Upload Your Skin Image for Analysis</h3>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <input type="file" name="image" accept="image/*" required>
+      </div>
+      <button type="submit" class="analyze-btn">Analyze Skin Condition</button>
+    </form>
+  </div>
+</body>
+</html>
