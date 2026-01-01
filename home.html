@@ -1,187 +1,146 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar Example</title>
-    <link rel="stylesheet" href="styl.css">
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="chat.css">
-    <style>
-        .stylish-button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .stylish-button:hover {
-            background-color: #45a049;
-        }
-
-        /* Background Video Styling */
-        .background-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -1;
-            background-size: cover;
-            overflow: hidden;
-            opacity: 0.8; /* Adjust as needed for transparency */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Prediction</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f7f7f7;
+    }
+    .card {
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .card-header {
+      background-color: #ffafc0;
+      color: white;
+      border-radius: 15px 15px 0 0;
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    /* Custom Predict Button styles */
+    .custom-predict-button {
+      background-color: #ffafc0 !important; /* Default pink */
+      border-color: #ffafc0 !important;
+      color: white !important;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    .custom-predict-button:hover {
+      background-color: #0056b3 !important; /* Hover blue */
+      border-color: #0056b3 !important;
+      color: white !important;
+    }
+  </style>
 </head>
 <body>
-    <video autoplay muted loop class="background-video">
-        <source src="Medical Background Animation for PPH (1).mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    
-    <nav class="navbar">
-        <div class="navbar-left">
-            <div class="account-container">
-                <img src="account.png" alt="Account" class="account-icon" id="accountIcon">
-                <div class="dropdown-content" id="accountDropdown">
-                    <!-- <a href="#dashboard">Dashboard</a>
-                    <a href="#profile">Profile</a> -->
-                    <a href="book.html">Book Appointment</a>
-                    <a href="poo.html">Patient</a>
-                    <a href="#doctor">Doctor</a>
-                    <a href="logout.html">Logout</a>
-                </div>
-            </div>
-            <a href="videpage.html" class="logo">MEDICAL ASSISTANT</a>
-        </div>
-        <div class="navbar-right">
-            <a href="#home">HOME</a>
-            <a href="#aboutus">ABOUT US</a>
-            <a href="services.html">SERVICES</a>
-            <a href="feedback.html">CONTACT US</a>
-            <a href="/database_firebase/one.html">SIGN IN</a>
-        </div>
-    </nav>
-    
-    <section class="home">
-        <div class="home-container" id="home">
-            <div class="home-content">
-                <h1 style="color: white;">Welcome to <span>MEDICAL ASSISTANT</span></h1>
-                <p style="color: white;">At Medical Assistant, we are dedicated to providing comprehensive healthcare solutions tailored to your needs. Our team of experienced professionals is committed to offering the highest quality care, ensuring that you receive personalized and effective treatment. From routine check-ups to specialized services, we are here to support your health journey every step of the way. Your well-being is our top priority, and we strive to make healthcare accessible, affordable, and convenient for everyone. Join us and experience a new standard of care that puts you at the center of everything we do.</p>
-            </div>
-            <div class="slideshow-container">
-                <div class="mySlides fade">
-                    <img src="homeimg2.gif" style="width:100%">
-                </div>
-                <div class="mySlides fade">
-                    <img src="homeimg.jfif" style="width:100%">
-                </div>
-                <div class="mySlides fade">
-                    <img src="homeimg1.webp" style="width:100%">
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="container">
+    <div class="card">
+      <div class="card-header text-center">
+        <h1>Heart Disease Prediction</h1>
+      </div>
+      <div class="card-body">
+        <form id="predictionForm">
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" class="form-control" id="age" name="age" required>
+          </div>
 
-    <section class="aboutus">
-        <button class="stylish-button" id="videoButton">What is Medical assistance</button>
-        <div class="aboutus-container" id="aboutus">
-            <div class="aboutus-image">
-                <h1><span>ABOUT US</span></h1>
-                <img src="aboutusimg.gif" alt="About Us">
-            </div>
-            <div class="aboutus-content">
-                <p>Welcome to our Virtual Medical Assistant platform, where cutting-edge technology meets compassionate care. Our mission is to revolutionize healthcare by providing accessible, efficient, and personalized medical support right at your fingertips. With a dedicated team of experienced healthcare professionals and advanced AI-driven tools, we ensure that you receive accurate medical advice, timely reminders, and seamless coordination of your healthcare needs. Whether you're managing a chronic condition, seeking advice on minor ailments, or needing assistance with medication schedules, our virtual assistant is here to support you every step of the way. Join us in transforming the future of healthcare, making it more convenient, connected, and caring.</p>
-            </div>
-        </div>
-    </section>
-    
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeLogin">&times;</span>
-            <form id="loginForm">
-                <h1>Log In</h1>
-                <input type="text" id="loginUsername" placeholder="Username" required>
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                <button type="submit">Log In</button>
-            </form>
-        </div>
+          <div class="form-group">
+            <label for="sex">Sex:</label>
+            <select class="form-control" id="sex" name="sex" required>
+              <option value="0">Female</option>
+              <option value="1">Male</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="bp">Blood Pressure (mm Hg):</label>
+            <input type="number" class="form-control" id="bp" name="bp" required>
+          </div>
+
+          <div class="form-group">
+            <label for="chol">Cholesterol Level (mg/dL):</label>
+            <input type="number" class="form-control" id="chol" name="chol" required>
+          </div>
+
+          <div class="form-group">
+            <label for="cp">Chest Pain Type:</label>
+            <select class="form-control" id="cp" name="cp" required>
+              <option value="0">Typical Angina</option>
+              <option value="1">Atypical Angina</option>
+              <option value="2">Non-Anginal Pain</option>
+              <option value="3">Asymptomatic</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="history">Family History of Heart Attack:</label>
+            <select class="form-control" id="history" name="history" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="diabetes">Diabetes:</label>
+            <select class="form-control" id="diabetes" name="diabetes" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+          <!-- Updated Predict Button with custom classes -->
+          <button type="button" class="btn custom-predict-button btn-block" onclick="predict()">Predict</button>
+        </form>
+
+        <h2 id="result" class="text-center"></h2>
+      </div>
     </div>
-    
-    <div id="signupModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeSignup">&times;</span>
-            <form id="signupForm">
-                <h1>Sign Up</h1>
-                <input type="text" id="signUpUsername" placeholder="Username" required>
-                <input type="password" id="signUpPassword" placeholder="Password" required>
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
-    </div>
-    
-    <div class="chatbox-wrapper">
-        <div class="chatbox-toggle">
-            <i class='bx bx-message-dots'></i>
-        </div>
-        <div class="chatbox-message-wrapper">
-            <div class="chatbox-message-header">
-                <div class="chatbox-message-profile">
-                    <img src="account.png" alt="" class="chatbox-message-image">
-                    <div>
-                        <h4 class="chatbox-message-name">Your Assistant</h4>
-                        <p class="chatbox-message-status">online</p>
-                    </div>
-                </div>
-                <div class="chatbox-message-dropdown">
-                    <i class='bx bx-dots-vertical-rounded chatbox-message-dropdown-toggle'></i>
-                    <ul class="chatbox-message-dropdown-menu">
-                        <li>
-                            <a href="#">Search</a>
-                        </li>
-                        <li>
-                            <a href="#">Report</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="chatbox-message-content">
-                <h4 class="chatbox-message-no-message">You don't have message yet!</h4>
-            </div>
-            <div class="chatbox-message-bottom">
-                <form action="#" class="chatbox-message-form">
-                    <textarea rows="1" placeholder="Type message..." class="chatbox-message-input"></textarea>
-                    <button type="submit" class="chatbox-message-submit"><i class='bx bx-send'></i></button>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-    <script src="chatscript.js"></script>
-    <script>
-        document.getElementById('videoButton').addEventListener('click', function() {
-            window.location.href = 'videpage.html';
-        });
-    </script>
-    
-    <script src="script.js"></script>
-    <script src="scripts.js"></script>
-    <script>
-        // When the chatbox toggle is clicked, navigate to chatbot.html
-        document.querySelector(".chatbox-toggle").addEventListener("click", function() {
-            window.location.href = "chatbot.html";
-        });
-    </script>
-    
-</body>  
+  </div>
+
+  <script>
+    function predict() {
+      const form = document.getElementById('predictionForm');
+      const formData = new FormData(form);
+
+      const age = parseInt(formData.get('age'));
+      const sex = parseInt(formData.get('sex'));
+      const bp = parseInt(formData.get('bp'));
+      const chol = parseInt(formData.get('chol'));
+      const cp = parseInt(formData.get('cp'));
+      const history = parseInt(formData.get('history'));
+      const diabetes = parseInt(formData.get('diabetes'));
+
+      let score = 0;
+
+      if (age > 50) score++;
+      if (sex === 1) score++;
+      if (bp > 130) score++;
+      if (chol > 200) score++;
+      if (cp !== 0) score++;
+      if (history === 1) score++;
+      if (diabetes === 1) score++;
+
+      let prediction = "No Heart Disease";
+      if (score >= 4) {
+        prediction = "High Risk of Heart Disease";
+      } else if (score >= 2) {
+        prediction = "Moderate Risk of Heart Disease";
+      }
+
+      document.getElementById('result').textContent = 'Prediction: ' + prediction;
+    }
+  </script>
+</body>
 </html>
